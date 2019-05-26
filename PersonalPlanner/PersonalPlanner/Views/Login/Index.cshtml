@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "_LayoutLogin.cshtml";
+}
+
+@using (Html.BeginForm("Logar", "Login"))
+{
+    <div class="row">
+        <div class="col-12">
+            <h1>Bem-Vindo!</h1>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:25px;">
+        <div class="col-12">
+            Faça o login para acessar seu Personal Planner
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:20px; margin-top:40px;">
+        <div class="col-lg-8 col-md-4 col-sm-4 col-xs-10 col-lg-offset-2 col-md-offset-4 col-sm-offset-4 col-xs-offset-1">
+            @Html.TextBox("txtUsuario", string.Empty, new { placeholder = "Usuário ou E-Mail", @class = "form-control center-block" })
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-lg-8 col-md-4 col-sm-4 col-xs-10 col-lg-offset-2 col-md-offset-4 col-sm-offset-4 col-xs-offset-1">
+            @Html.TextBox("txtSenha", string.Empty, new { placeholder = "Senha", @class = "form-control center-block", @type = "password" })
+        </div>
+    </div>
+    <div class="row" style="margin-top:50px">
+        <button class="btn btn-success col-lg-6 col-md-4 col-sm-4 col-xs-10 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 col-xs-offset-1">Log in</button>
+    </div>
+}
+
+@using (Html.BeginForm("Cadastro", "Login"))
+{
+    <div class="row" style="margin-top:20px">
+        <label>Ainda não possui conta?</label>
+    </div>
+    <div class="row">
+        <button class="btn btn-warning col-lg-6 col-md-4 col-sm-4 col-xs-10 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 col-xs-offset-1">Cadastre-se</button>
+    </div>
+}

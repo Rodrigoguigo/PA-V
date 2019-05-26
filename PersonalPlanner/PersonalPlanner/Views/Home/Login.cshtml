@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="row">
+        <h1>Bem-Vindo!</h1>
+    </div>
+    <div class="row">
+        <div>Faça o login para acessar o Personal Planner</div>
+    </div>
+    <div class="row">
+        @Html.TextBox("txtUsuario", string.Empty, new { placeholder = "Usuário ou E-Mail", @class = "form-input" })
+    </div>
+    <div class="row">
+        @Html.TextBox("txtSenha", string.Empty, new { placeholder = "Senha", @class = "form-input" })
+    </div>
+    <div class="row">
+        <button class="btn btn-success col-lg-4 col-md-4 col-sm-4 col-xs-12">Log in</button>
+    </div>
+</body>
+</html>

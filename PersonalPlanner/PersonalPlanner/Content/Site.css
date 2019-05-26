@@ -1,0 +1,61 @@
+﻿html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.vertical-align {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.grandParentContainer {
+    display: table;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.parentContainer {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #a7b3e6;
+}
+
+.form-container {
+    background-color: #a7b3e6
+}
+
+@media (min-width: 768px) {
+    .parentContainer {
+        display: table-cell;
+        vertical-align: middle;
+        background-color: #7386D5;
+    }
+
+    .form-container {
+        border-radius: 5%;
+        border: 2px solid #000000;
+        padding: 2% 0;
+        background-color: #a7b3e6;
+    }
+}
+
+@media (max-width: 767px){
+    input, button{
+        height: 50px !important;
+    }
+}
