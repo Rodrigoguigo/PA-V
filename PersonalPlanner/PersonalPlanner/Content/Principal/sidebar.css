@@ -3,6 +3,10 @@
     align-items: stretch;
 }
 
+.adicionar-projeto a {
+    background-color: #6778c0;
+}
+
 #sidebar {
     min-width: 350px;
     max-width: 350px;

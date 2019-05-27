@@ -9,8 +9,10 @@
     <link href="@Url.Content("~/Content/Principal/sidebar.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Principal/style.css")" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="~/Content/jquery-ui.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
@@ -55,6 +57,9 @@
                     <li>
                         <a href="#">Projeto POO</a>
                     </li>
+                    <li class="adicionar-projeto">
+                        <a onclick="showProjetosPopup()" href="#"><span class="fa fa-2x fa-plus float-right"></span>Adicionar Projeto</a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -73,8 +78,8 @@
                 <h2 id="MenuAtual">Hoje</h2>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-2" style="margin-top:7px">
-                <span class="fas fa-cog topmenu-icon float-right"></span>
-                <span class="fas fa-plus-circle topmenu-icon float-right"></span>
+                <a href="#"><span class="fas fa-cog topmenu-icon float-right"></span></a>
+                <a onclick="showTarefasPopup()" href="#"><span class="fas fa-plus-circle topmenu-icon float-right"></span></a>
             </div>
         </div>
         <div class="row">
@@ -88,12 +93,17 @@
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
             <ul class="nav navbar-nav ml-auto"></ul>
         </div>
     </div>
 
     <div class="overlay"></div>
+</div>
+<div id="popUpTarefas" style="display:none">
+    @Html.Partial("Tarefa")
+</div>
+<div id="popUpProjetos" style="display:none">
+    @Html.Partial("Projeto")
 </div>
 
 @Scripts.Render("~/bundles/jquery")
@@ -101,4 +111,7 @@
 
 <script src="@Url.Content("~/Scripts/Principal/main.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Principal/sidebar.js")" type="text/javascript"></script>
-
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.dialogOptions.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />

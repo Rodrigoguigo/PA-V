@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("CadastrarProjeto", "Home"))
+{
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBox("txtProjeto", string.Empty, new { placeholder = "Tarefa" })
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBox("teste")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button class="btn btn-success" style="width:100%">Gravar</button>
+        </div>
+    </div>
+}

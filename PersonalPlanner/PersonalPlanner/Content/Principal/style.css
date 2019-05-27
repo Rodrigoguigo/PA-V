@@ -10,9 +10,13 @@
 }
 
 .topmenu-icon {
-    font-size:32px;
-    margin-left:15px;
+    font-size: 32px;
+    margin-left: 15px;
 }
+
+    .topmenu-icon:hover {
+        background-color: #6d7fcc;
+    }
 
 .content {
     width: 100%;
