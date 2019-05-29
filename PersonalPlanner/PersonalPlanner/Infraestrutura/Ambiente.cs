@@ -8,16 +8,18 @@ namespace PersonalPlanner.Infraestrutura
 {
     public class Ambiente
     {
+        private static Usuario usuarioLogado;
+
         public static Usuario UsuarioLogado {
             get
             {
-                if (UsuarioLogado == null)
+                if (usuarioLogado == null)
                     return new Usuario();
-                return UsuarioLogado;
+                return usuarioLogado;
             }
             set
             {
-                UsuarioLogado = value;
+                usuarioLogado = value;
             }
         }
     }

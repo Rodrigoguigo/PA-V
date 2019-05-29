@@ -1,0 +1,6 @@
+C:\Users\Rodrigo\Documents\Facens\PAV\Site\PersonalPlanner\PersonalPlannerLib\bin\Debug\PersonalPlannerLib.dll
+C:\Users\Rodrigo\Documents\Facens\PAV\Site\PersonalPlanner\PersonalPlannerLib\bin\Debug\PersonalPlannerLib.pdb
+C:\Users\Rodrigo\Documents\Facens\PAV\Site\PersonalPlanner\PersonalPlannerLib\obj\Debug\PersonalPlannerLib.csprojAssemblyReference.cache
+C:\Users\Rodrigo\Documents\Facens\PAV\Site\PersonalPlanner\PersonalPlannerLib\obj\Debug\PersonalPlannerLib.csproj.CoreCompileInputs.cache
+C:\Users\Rodrigo\Documents\Facens\PAV\Site\PersonalPlanner\PersonalPlannerLib\obj\Debug\PersonalPlannerLib.dll
+C:\Users\Rodrigo\Documents\Facens\PAV\Site\PersonalPlanner\PersonalPlannerLib\obj\Debug\PersonalPlannerLib.pdb

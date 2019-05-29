@@ -28,7 +28,17 @@ namespace PersonalPlanner.Controllers
 
             if (boUsuario.ExisteUsuario(model.Login))
             {
-                ViewBag.Message = "Usuário já existente";
+                ViewBag.Message = "Usuario ja existente";
+                return View("Signin");
+            }
+            else if (boUsuario.ExisteUsuario(model.Email))
+            {
+                ViewBag.Message = "Email ja cadastrado por outro usuario";
+                return View("Signin");
+            }
+            else if (model.Senha != model.ConfirmarSenha)
+            {
+                ViewBag.Message = "Ambas as senhas precisam ser as mesmas";
                 return View("Signin");
             }
             else
@@ -49,7 +59,7 @@ namespace PersonalPlanner.Controllers
             }
             else
             {
-                ViewBag.Message = "Usuário ou Senha incorretos";
+                ViewBag.Message = "Usuario ou Senha incorretos";
                 return View("Index");
             }
         }

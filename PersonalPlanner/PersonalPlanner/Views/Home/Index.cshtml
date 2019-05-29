@@ -100,11 +100,18 @@
     <div class="overlay"></div>
 </div>
 <div id="popUpTarefas" style="display:none">
-    @Html.Partial("Tarefa")
+    @Html.Partial("Tarefa", new PersonalPlanner.Models.TarefaViewModel())
 </div>
 <div id="popUpProjetos" style="display:none">
-    @Html.Partial("Projeto")
+    @Html.Partial("Projeto", new PersonalPlanner.Models.ProjetoViewModel())
 </div>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <script type="text/javascript">
+        alert("@ViewBag.Message");
+    </script>
+}
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")

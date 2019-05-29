@@ -1,6 +1,7 @@
 ﻿using PersonalPlannerLib.DML;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
@@ -17,16 +18,18 @@ namespace PersonalPlannerLib.DAL
 
         public void Incluir(string pNome, string pEmail, string pSenha)
         {
-            SqlDataReader retorno = ExecutarProcedure(SP_INCLUIR_USUARIO, new object[] { pNome, pEmail, pSenha });
+            DataTable tableRetorno = ExecutarProcedure(SP_INCLUIR_USUARIO, new object[] { pNome, pEmail, pSenha, 0 });
         }
 
         public Usuario Consultar(string pNomeEmail)
         {
             Usuario usuario = new Usuario();
-            SqlDataReader retorno = ExecutarProcedure(SP_CONSULTAR_USUARIO, new object[] { pNomeEmail });
+            DataTable tableRetorno = ExecutarProcedure(SP_CONSULTAR_USUARIO, new object[] { pNomeEmail });
 
-            if (retorno.HasRows)
+            if (tableRetorno.Rows.Count > 0)
             {
+                DataRow retorno = tableRetorno.Rows[0];
+
                 if (retorno["UsuarioID"] != DBNull.Value)
                     usuario.Codigo = int.TryParse(retorno["UsuarioID"].ToString(), out int res) ? res : 0;
                 if (retorno["LoginName"] != DBNull.Value)

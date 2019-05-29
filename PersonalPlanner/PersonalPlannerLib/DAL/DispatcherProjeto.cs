@@ -1,6 +1,7 @@
 ﻿using PersonalPlannerLib.DML;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -20,16 +21,18 @@ namespace PersonalPlannerLib.DAL
 
         public void Incluir(string pTitulo, int pCodUsuario, int pCodPai)
         {
-            SqlDataReader retorno = ExecutarProcedure(SP_INCLUIR_PROJETO, new object[] { pTitulo, pCodUsuario.ToString(), (pCodPai > 0) ? pCodPai.ToString() : null });
+            DataTable retorno = ExecutarProcedure(SP_INCLUIR_PROJETO, new object[] { pTitulo, pCodUsuario.ToString(), (pCodPai > 0) ? pCodPai.ToString() : null });
         }
 
         public Projeto Consultar(int pCodProjeto, int pCodUsuario)
         {
             Projeto projeto = new Projeto();
-            SqlDataReader retorno = ExecutarProcedure(SP_CONSULTAR_PROJETO, new object[] { pCodProjeto.ToString(), pCodUsuario.ToString() });
+            DataTable tableRetorno = ExecutarProcedure(SP_CONSULTAR_PROJETO, new object[] { pCodProjeto.ToString(), pCodUsuario.ToString() });
 
-            if (retorno.HasRows)
+            if (tableRetorno.Rows.Count > 0)
             {
+                DataRow retorno = tableRetorno.Rows[0];
+
                 if (retorno["ProjetoID"] != DBNull.Value)
                     projeto.Codigo = int.TryParse(retorno["ProjetoID"].ToString(), out int res) ? res : 0;
                 if (retorno["Titulo"] != DBNull.Value)
@@ -41,12 +44,12 @@ namespace PersonalPlannerLib.DAL
             return projeto;
         }
 
-        public List<Projeto> ConsultarPorUsuario(int pCodUsuario)
+        public List<Projeto> ConsultarPorUsuario(int pCodUsuario, bool pConsultaFilhos)
         {
             List<Projeto> projetos = new List<Projeto>();
-            SqlDataReader retorno = ExecutarProcedure(SP_CONSULTAR_PROJETOS_POR_USUARIO, new object[] { pCodUsuario.ToString() });
+            DataTable tableRetorno = ExecutarProcedure(SP_CONSULTAR_PROJETOS_POR_USUARIO, new object[] { pCodUsuario.ToString(), pConsultaFilhos ? "S" : "N" });
 
-            while (retorno.Read())
+            foreach (DataRow retorno in tableRetorno.Rows)
             {
                 Projeto projeto = new Projeto();
                 if (retorno["ProjetoID"] != DBNull.Value)
@@ -65,9 +68,9 @@ namespace PersonalPlannerLib.DAL
         public List<Projeto> ConsultarPorProjetoPai(int pCodUsuario, int pCodProjetoPai)
         {
             List<Projeto> projetos = new List<Projeto>();
-            SqlDataReader retorno = ExecutarProcedure(SP_CONSULTAR_PROJETOS_FILHOS, new object[] { pCodUsuario.ToString(), pCodProjetoPai.ToString() });
+            DataTable tableRetorno = ExecutarProcedure(SP_CONSULTAR_PROJETOS_FILHOS, new object[] { pCodUsuario.ToString(), pCodProjetoPai.ToString() });
 
-            while (retorno.Read())
+            foreach (DataRow retorno in tableRetorno.Rows)
             {
                 Projeto projeto = new Projeto();
                 if (retorno["ProjetoID"] != DBNull.Value)

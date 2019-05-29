@@ -1,6 +1,7 @@
 ﻿using PersonalPlannerLib.DML;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -18,16 +19,18 @@ namespace PersonalPlannerLib.DAL
 
         public void Incluir(string pTitulo, string pDescricao, DateTime pDataEntrega, int pCodProjeto, int pCodUsuario)
         {
-            SqlDataReader retorno = ExecutarProcedure(SP_INCLUIR_TAREFA, new object[] { pTitulo, pDescricao, pDataEntrega.ToString(), pCodProjeto.ToString(), pCodUsuario.ToString() });
+            DataTable tableRetorno = ExecutarProcedure(SP_INCLUIR_TAREFA, new object[] { pTitulo, pDescricao, pDataEntrega.ToString(), pCodProjeto.ToString(), pCodUsuario.ToString() });
         }
 
         public Tarefa Consultar(int pCodTarefa, int pCodUsuario)
         {
             Tarefa tarefa = new Tarefa();
-            SqlDataReader retorno = ExecutarProcedure(SP_CONSULTAR_TAREFA, new object[] { pCodTarefa.ToString(), pCodUsuario.ToString() });
+            DataTable tableRetorno = ExecutarProcedure(SP_CONSULTAR_TAREFA, new object[] { pCodTarefa.ToString(), pCodUsuario.ToString() });
 
-            if (retorno.HasRows)
+            if (tableRetorno.Rows.Count > 0)
             {
+                DataRow retorno = tableRetorno.Rows[0];
+
                 if (retorno["TarefaID"] != DBNull.Value)
                     tarefa.Codigo = int.TryParse(retorno["TarefaID"].ToString(), out int res) ? res : 0;
                 if (retorno["Titulo"] != DBNull.Value)
@@ -46,9 +49,9 @@ namespace PersonalPlannerLib.DAL
         public List<Tarefa> ConsultarPorProjeto(int pCodProjeto, int pCodUsuario)
         {
             List<Tarefa> tarefas = new List<Tarefa>();
-            SqlDataReader retorno = ExecutarProcedure(SP_CONSULTAR_TAREFA_POR_PROJETO, new object[] { pCodProjeto.ToString(), pCodUsuario.ToString() });
+            DataTable tableRetorno = ExecutarProcedure(SP_CONSULTAR_TAREFA_POR_PROJETO, new object[] { pCodProjeto.ToString(), pCodUsuario.ToString() });
 
-            while (retorno.Read())
+            foreach (DataRow retorno in tableRetorno.Rows)
             {
                 Tarefa tarefa = new Tarefa();
 

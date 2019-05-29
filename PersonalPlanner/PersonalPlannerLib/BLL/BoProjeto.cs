@@ -24,11 +24,11 @@ namespace PersonalPlannerLib.BLL
             return dsp.Consultar(pCodProjeto, pCodUsuario);
         }
 
-        public List<Projeto> ConsultarPorUsuario(int pCodUsuario)
+        public List<Projeto> ConsultarPorUsuario(int pCodUsuario, bool pConsultaFilhos)
         {
             DispatcherProjeto dsp = new DispatcherProjeto();
 
-            return dsp.ConsultarPorUsuario(pCodUsuario);
+            return dsp.ConsultarPorUsuario(pCodUsuario, pConsultaFilhos);
         }
 
         public List<Projeto> ConsultarPorProjetoPai(int pCodUsuario, int pCodProjetoPai)
